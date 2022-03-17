@@ -13,7 +13,6 @@ namespace MyAddressManageTool.TableManager.Manager
 {
     /// <summary>
     /// テーブルマネージャー
-    /// ※パラメータが時間の時Accessでは#2021/1/1 10:00:00#のようにする必要が合ある
     /// </summary>
     /// <typeparam name="T">エンティティ型</typeparam>
     internal class TableManagerControll<T> where T : class

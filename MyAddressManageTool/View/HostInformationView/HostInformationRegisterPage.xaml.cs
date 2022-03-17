@@ -30,8 +30,8 @@ namespace MyAddressManageTool.View.HostInformationView
 
         public HostInformationRegisterPage()
         {
-            DataContext = new HostInformation();
             InitializeComponent();
+            DataContext = new HostInformation();
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,7 @@ namespace MyAddressManageTool.View.HostInformationView
             NavigationService.Refresh();
         }
 
-        private void RegisteerButton_Click(object sender, RoutedEventArgs e)
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             // 画面情報取得
             HostInformation hostInformation = (HostInformation)DataContext;
@@ -52,7 +52,7 @@ namespace MyAddressManageTool.View.HostInformationView
             if (validationErros.Count > 0)
             {
                 ErrorImformationList.ItemsSource = validationErros;
-                this.UpdateLayout();
+                UpdateLayout();
                 return;
             }
 
@@ -76,7 +76,6 @@ namespace MyAddressManageTool.View.HostInformationView
                 _ = MessageBox.Show("登録完了しました。", "Information", MessageBoxButton.OK, MessageBoxImage.None);
 
                 // 画面項目初期化
-                DataContext = new HostInformation();
                 NavigationService.Refresh();
             }
             catch (MyApplicationException ex)

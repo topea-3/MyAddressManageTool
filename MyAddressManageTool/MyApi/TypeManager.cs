@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MyAddressManageTool.TableManager;
 using MyAddressManageTool.TableManager.Entity;
 using MyAddressManageTool.TableManager.Manager;
@@ -8,14 +9,15 @@ namespace MyAddressManageTool.MyApi
 {
     internal class TypeManager
     {
-        private static readonly IDictionary<string, IDictionary<string, string?>?> typeDictionaryCash
-            = new Dictionary<string, IDictionary<string, string?>?>();
+        private static readonly IDictionary<string, IDictionary<string, string?>?> typeDictionaryCash;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public static void Init()
+        static TypeManager()
         {
+            // key TypeId, value value-valueName_Dictionary
+            typeDictionaryCash = new Dictionary<string, IDictionary<string, string?>?>();
             if (typeDictionaryCash.Count == 0)
             {
                 // データ取得
@@ -28,22 +30,38 @@ namespace MyAddressManageTool.MyApi
                 ICollection<TypeDictTableEntity> entityCollection
                     = tableManager.Select("order by TYPE_ID ASC, SORT ASC", new List<object>());
 
-                string bewforeTypeId = "";
+                // 前データ
+                TypeDictTableEntity? befTypeDictTableEntity = null;
+                // key value, value valueName
                 IDictionary<string, string?>? typeValueNameDict = new Dictionary<string, string?>();
                 // データキャッシュ
                 foreach (TypeDictTableEntity entity in entityCollection)
                 {
-                    if (!bewforeTypeId.Equals(entity.TypeId))
+                    if(befTypeDictTableEntity == null)
                     {
-                        if (!string.IsNullOrEmpty(bewforeTypeId))
-                        {
-                            typeDictionaryCash.Add(bewforeTypeId, typeValueNameDict);
-                        }
+                        //　初回処理
+                        befTypeDictTableEntity = entity;
+                        continue;
+                    }
+
+                    // value-valueName_Dictionaryに詰める
+                    string value = befTypeDictTableEntity.Value ?? "";
+                    typeValueNameDict.Add(value, befTypeDictTableEntity.ValueName);
+
+                    if(befTypeDictTableEntity.TypeId != entity.TypeId)
+                    {
+                        // TypeId切り替わり時の処理
+                        string typeId = befTypeDictTableEntity.TypeId ?? "";
+                        typeDictionaryCash.Add(typeId, typeValueNameDict);
                         typeValueNameDict = new Dictionary<string, string?>();
                     }
-                    typeValueNameDict.Add(entity.Value ?? "", entity.ValueName);
+
+                    // 前回情報に入れる
+                    befTypeDictTableEntity= entity;
                 }
-                typeDictionaryCash.Add(bewforeTypeId, typeValueNameDict);
+                // 最後の処理
+                string lastTypeId = befTypeDictTableEntity?.TypeId ?? "";
+                typeDictionaryCash.Add(lastTypeId, typeValueNameDict);
             }
         }
 

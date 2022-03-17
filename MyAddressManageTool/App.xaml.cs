@@ -47,8 +47,6 @@ namespace MyAddressManageTool
 
                 Shutdown();
             }
-
-            TypeManager.Init();
         }
 
         /// <summary>

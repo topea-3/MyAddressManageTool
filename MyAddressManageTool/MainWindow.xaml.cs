@@ -46,7 +46,7 @@ namespace MyAddressManageTool
         private void ExecuteTest(object sender, RoutedEventArgs e)
         {
             // TestClass.testExec();
-            ContentsWindow contentsWindow = new("HostInformationView/HostInformationRegisterPage.xaml");
+            ContentsWindow contentsWindow = new("HostInformationView/HostInformationInquiryPage.xaml");
             contentsWindow.Show();
         }
     }
