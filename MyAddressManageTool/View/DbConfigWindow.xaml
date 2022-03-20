@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyAddressManageTool.View"
         mc:Ignorable="d"
-        Title="DbConfigWindow" MaxHeight="150" MaxWidth="550" MinHeight="150" MinWidth="550">
+        Title="住所管理ツール - DB設定" MaxHeight="150" MaxWidth="550" MinHeight="150" MinWidth="550">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10,10,10,10">
-            <Label>MicrosoftAccessのデータベースファイルのフルパスを入力してください。</Label>
+            <Label>MicrosoftAccessのデータベースファイルを指定してください。</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="AccessFullPathTextBox" Width="400" Margin="20,0,20,0"></TextBox>
                 <Button Name="OpenFileDialogButton" Content="ファイル選択" Click="OpenFileDialogButton_Click"></Button>

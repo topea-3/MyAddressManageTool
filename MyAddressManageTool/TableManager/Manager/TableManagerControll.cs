@@ -232,7 +232,7 @@ namespace MyAddressManageTool.TableManager.Manager
                     }
                     else
                     {
-                        _ = whereSql.Append(SPACE).Append(SEPERATER).Append(map.Value.ColumnName).Append(" = ?");
+                        _ = whereSql.Append(SPACE).Append(" AND ").Append(map.Value.ColumnName).Append(" = ?");
                     }
 
                     PropertyInfo properttInfo = entityType.GetProperty(name: map.Key) ?? throw new MissingFieldException(map.Key);

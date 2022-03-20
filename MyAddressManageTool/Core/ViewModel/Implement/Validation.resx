@@ -119,54 +119,54 @@
   </resheader>
   <data name="V0001-Address1" xml:space="preserve">
     <value>StringLengthCheck_100_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-Address2" xml:space="preserve">
     <value>StringLengthCheck_100_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-AddressNumber1" xml:space="preserve">
     <value>FormatCheck_^[0-9]{3}$</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-AddressNumber2" xml:space="preserve">
-    <value>FormatCheck_^[0-9]{5}$</value>
-    <comment>ホスト情報登録画面</comment>
+    <value>FormatCheck_^[0-9]{4}$</value>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-FamilyName" xml:space="preserve">
     <value>StringLengthCheck_50_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-HostName" xml:space="preserve">
     <value>RequiredCheck__StringLengthCheck_100_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-Name" xml:space="preserve">
     <value>StringLengthCheck_50_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-Remarks" xml:space="preserve">
     <value>StringLengthCheck_200_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-SubName1" xml:space="preserve">
     <value>StringLengthCheck_50_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-SubName2" xml:space="preserve">
     <value>StringLengthCheck_50_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-SubName3" xml:space="preserve">
     <value>StringLengthCheck_50_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-SubName4" xml:space="preserve">
     <value>StringLengthCheck_50_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
   <data name="V0001-SubName5" xml:space="preserve">
     <value>StringLengthCheck_50_0</value>
-    <comment>ホスト情報登録画面</comment>
+    <comment>ホスト情報画面</comment>
   </data>
 </root>

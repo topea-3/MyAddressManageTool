@@ -88,7 +88,7 @@ namespace MyAddressManageTool.Core.ViewModel.Implement {
         }
         
         /// <summary>
-        ///   FormatCheck_^[0-9]{5}$ に類似しているローカライズされた文字列を検索します。
+        ///   FormatCheck_^[0-9]{4}$ に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string V0001_AddressNumber2 {
             get {

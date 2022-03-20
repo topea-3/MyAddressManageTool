@@ -13,26 +13,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MyAddressManageTool.View.HostInformationView
 {
     /// <summary>
-    /// HostInformationInquiryPage.xaml の相互作用ロジック
+    /// HostInformationInquiryWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class HostInformationInquiryPage : Page
+    public partial class HostInformationInquiryWindow : Window
     {
-        // 検索条件
         private HostInfoSearchCondition condition;
 
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
-        public HostInformationInquiryPage()
+        public HostInformationInquiryWindow()
         {
-            // 初期化
             InitializeComponent();
+
             // 検索条件インスタンス化
             condition = new();
             // バインディング設定
@@ -51,14 +46,15 @@ namespace MyAddressManageTool.View.HostInformationView
         {
             // 検索時間設定
             condition.SearchDateTime = DateTime.Now.ToString();
-                        
+
             // 履歴カラム表示制御
             if (condition.IsHistoryView)
             {
-                HistoryColumn.Visibility= Visibility.Visible;
-            } else
+                HistoryColumn.Visibility = Visibility.Visible;
+            }
+            else
             {
-                HistoryColumn.Visibility= Visibility.Hidden;
+                HistoryColumn.Visibility = Visibility.Hidden;
             }
 
             // Validationチェック なし
@@ -107,8 +103,34 @@ namespace MyAddressManageTool.View.HostInformationView
         /// <param name="e"></param>
         private void GoRegisterPageButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentsWindow contentsWindow = new("HostInformationView/HostInformationRegisterPage.xaml");
-            contentsWindow.Show();
+            HostInformation hostInformation = new HostInformation();
+            HostInformationWindow window = new HostInformationWindow(null, HostInformationWindow.ModeType.Register);
+            window.Show();
+        }
+
+        /// <summary>
+        /// データセレクトイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HostInformationInquiryData_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            Inquiry4HostInformation? selectedItem = HostInformationInquiryData.SelectedItem as Inquiry4HostInformation;
+
+            if (selectedItem == null)
+            {
+                // 選択アイテムがなしの場合処理終了
+                return;
+            }
+
+            // 連携データセットアップ
+            HostInformation argHostInformation = new();
+            argHostInformation.HostId = selectedItem.HostId;
+            argHostInformation.SeqNo = selectedItem.SeqNo;
+
+            // ホスト情報画面を参照モードで起動
+            HostInformationWindow window = new HostInformationWindow(argHostInformation, HostInformationWindow.ModeType.Show);
+            window.Show();
         }
     }
 }

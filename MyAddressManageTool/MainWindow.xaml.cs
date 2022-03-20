@@ -32,7 +32,7 @@ namespace MyAddressManageTool
             if (!TransactionManager.IsAccessDbPathEffective())
             {
                 // 有効な設定がない場合、設定ダイアログ表示
-                DbConfigWindow dbConfigWindow = new DbConfigWindow();
+                DbConfigWindow dbConfigWindow = new();
                 bool? daialogResult = dbConfigWindow.ShowDialog();
                 
                 if (!daialogResult ?? throw new ApplicationException("想定外のNULL参照が発生しました。"))
@@ -46,8 +46,8 @@ namespace MyAddressManageTool
         private void ExecuteTest(object sender, RoutedEventArgs e)
         {
             // TestClass.testExec();
-            ContentsWindow contentsWindow = new("HostInformationView/HostInformationInquiryPage.xaml");
-            contentsWindow.Show();
+            HostInformationInquiryWindow window = new();
+            window.Show();
         }
     }
 }

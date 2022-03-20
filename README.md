@@ -1,11 +1,11 @@
 MyAddressManageTool
 
-â– å‰ææ¡ä»¶
-Microsoft Access ï¼ˆ64bitç‰ˆï¼‰ãŒã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ã‚‹ã“ã¨
-ï¼ˆ64bitç‰ˆã®ãƒ‡ãƒ¼ã‚¿ã¹ãƒ¼ã‚¨ãƒ³ã‚¸ãƒ³ãŒå¿…è¦ï¼‰
+¡‘O’ñğŒ
+Microsoft Access i64bit”Åj‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚±‚Æ
+i64bit”Å‚Ìƒf[ƒ^‚×[ƒGƒ“ƒWƒ“‚ª•K—vj
 
-â– ä½¿ç”¨DB
-Microsoft Accessï¼ˆ64bitç‰ˆï¼‰
+¡g—pDB
+Microsoft Accessi64bit”Åj
 
-â– DBæ§‹ç¯‰SQL
-åˆ¥é€”pushäºˆå®š
+¡DB\’zSQL
+•Ê“rpush—\’è
