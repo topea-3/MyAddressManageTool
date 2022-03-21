@@ -161,8 +161,8 @@ namespace MyAddressManageTool.MyApi
 
                 // 設定値比較
                 object? prop1PropertyValue = prop1Info.GetValue(prop1);
-                object? prop2PropertyValue = prop2Info.GetValue(prop1);
-                if (prop1PropertyValue != prop2PropertyValue)
+                object? prop2PropertyValue = prop2Info.GetValue(prop2);
+                if (!System.Object.Equals(prop1PropertyValue, prop2PropertyValue))
                 {
                     // 変更があればtrueを返却
                     return true;

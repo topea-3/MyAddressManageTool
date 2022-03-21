@@ -140,5 +140,14 @@ namespace MyAddressManageTool.Core.Message.Implement {
                 return ResourceManager.GetString("M0009", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   変更がありません。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string M0010 {
+            get {
+                return ResourceManager.GetString("M0010", resourceCulture);
+            }
+        }
     }
 }
