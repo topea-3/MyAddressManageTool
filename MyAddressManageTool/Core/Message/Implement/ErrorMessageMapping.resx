@@ -123,6 +123,11 @@
   </data>
   <data name="EA0002" xml:space="preserve">
     <value>M0009</value>
+    <comment>業務例外：重複エラー</comment>
+  </data>
+  <data name="EA0003" xml:space="preserve">
+    <value>M0010</value>
+    <comment>業務例外：変更なしエラー</comment>
   </data>
   <data name="ES0001" xml:space="preserve">
     <value>M0002</value>

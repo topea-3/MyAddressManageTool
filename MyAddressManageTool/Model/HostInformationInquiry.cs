@@ -19,6 +19,7 @@ namespace MyAddressManageTool.Model
         private const string WHERE_AND = " AND ";
         private const string WHERE_HOST_NAME = " HOST_NAME like ? ";
         private const string WHERE_NON_HISTORY = " DELETE_FLAG = '0' ";
+        private const string WHERE_ORDER_BY = " ORDER BY HOST_ID ASC, SEQ_NO ASC";
 
         // トランザクション
         private readonly TransactionManager transactionManager;
@@ -62,6 +63,8 @@ namespace MyAddressManageTool.Model
             {
                 SqlBuilder(ref sql, WHERE_NON_HISTORY, isFirstCondition);
             }
+            // オーダーバイ
+            _ = sql.Append(WHERE_ORDER_BY);
 
             // データ検索
             ICollection<HostInfoTableEntity> hostInfoTableEntities = table.Select(sql.ToString(), parameter);
@@ -89,11 +92,11 @@ namespace MyAddressManageTool.Model
         {
             if (isFirstCondition)
             {
-                sql.Append(WHERE);
+                _ = sql.Append(WHERE);
             } else {
-                sql.Append(WHERE_AND);
+                _ = sql.Append(WHERE_AND);
             }
-            sql.Append(sqlParts);
+            _ = sql.Append(sqlParts);
         }
     }
 }

@@ -37,7 +37,9 @@ namespace MyAddressManageTool.View.HostInformationView
 
         // 画面ID
         private const string VIEW_ID = "V0001";
-
+        // タイプ値
+        private const string DELETE_FLAG_NORMAL = "0";
+        private const string DELETE_FLAG_DELETE = "1";
         // モードタイプ
         private ModeType modeType;
 
@@ -128,8 +130,7 @@ namespace MyAddressManageTool.View.HostInformationView
                 case ModeType.Delete:
                     break;
                 case ModeType.Change:
-                    break;
-                case ModeType.Show:
+                    ChangeExecute();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("mode");
@@ -176,6 +177,7 @@ namespace MyAddressManageTool.View.HostInformationView
             hostInformation.HostId = null;
             hostInformation.SeqNo = 1;
             hostInformation.HostName = null;
+            hostInformation.DeleteFlag = DELETE_FLAG_NORMAL;
             hostInformation.CreateDateTime = null;
             hostInformation.UpdateDateTime = null;
 
@@ -293,6 +295,13 @@ namespace MyAddressManageTool.View.HostInformationView
                 // 画面表示更新
                 ErrorImformationList.ItemsSource = null;
                 PropertiesCopyUtil.CopyProperties(currentHostInformation, ref hostInformation, PropertiesCopyUtil.CopyType.NullEmptyOverride);
+                
+                if (DELETE_FLAG_DELETE == hostInformation.DeleteFlag)
+                {
+                    // ラジオボタン非活性化
+                    ChangeModeRadioButton.IsEnabled = false;
+                    DeleteModeRadioButton.IsEnabled = false;
+                }
             }
             catch (MyApplicationException ex)
             {
@@ -349,6 +358,9 @@ namespace MyAddressManageTool.View.HostInformationView
             ClearButton.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// 登録処理
+        /// </summary>
         private void RegisterExec()
         {
             // Validationチェック
@@ -402,6 +414,57 @@ namespace MyAddressManageTool.View.HostInformationView
                 hostInformation.Address2 = null;
                 hostInformation.Remarks = null;
                 ErrorImformationList.ItemsSource = null;
+            }
+            catch (MyApplicationException ex)
+            {
+                IList<string> error = new List<string>();
+                error.Add(ex.Message);
+                ErrorImformationList.ItemsSource = error;
+            }
+            finally
+            {
+                if (!isCommited)
+                {
+                    transaction.Rollback();
+                }
+                transaction.EndTransaction();
+            }
+        }
+
+        // 変更処理
+        private void ChangeExecute()
+        {
+            // Validationチェック
+            MyValidation validation = new();
+            validation.ExecuteValidate(VIEW_ID, hostInformation);
+            IList<string> validationErros = validation.GetResults();
+
+            if (validationErros.Count > 0)
+            {
+                ErrorImformationList.ItemsSource = validationErros;
+                UpdateLayout();
+                return;
+            }
+
+            // トランザクション制御開始
+            TransactionManager transaction = new();
+            transaction.StartTransaction();
+            HostInformationChange model = new(transaction);
+            bool isCommited = false;
+
+            try
+            {
+                HostInformation returnHostInformation = model.ExcecuteChange(hostInformation);
+                transaction.Commit();
+                isCommited = true;
+
+                // 完了メッセージ表示
+                _ = MessageBox.Show("変更完了しました。", "Information", MessageBoxButton.OK, MessageBoxImage.None);
+
+                // 画面情報の更新
+                ErrorImformationList.ItemsSource = null;
+                PropertiesCopyUtil.CopyProperties(returnHostInformation, ref hostInformation, PropertiesCopyUtil.CopyType.NullEmptyOverride);
+                ShowModeRadioButton.IsChecked = true;
             }
             catch (MyApplicationException ex)
             {

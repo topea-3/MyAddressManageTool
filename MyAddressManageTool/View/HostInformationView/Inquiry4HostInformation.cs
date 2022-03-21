@@ -16,17 +16,6 @@ namespace MyAddressManageTool.View.HostInformationView
         public string? Name { get; set; }
         public string? Remarks { get; set; }
         // 削除フラグ
-        private string? _deleteFlag;
-        public string? DeleteFlag 
-        { 
-            get => _deleteFlag;
-            set
-            {
-                if (!String.IsNullOrEmpty(value))
-                {
-                    _deleteFlag = TypeManager.GetValueName("DELETE", value);
-                }
-            }
-        }
+        public string? DeleteFlag { get; set; }
     }
 }

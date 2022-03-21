@@ -86,5 +86,31 @@ namespace MyAddressManageTool.MyApi
             IDictionary<string, string?>? typeValueNameDict = GetTyepDictById(typeId);
             return typeValueNameDict?[typeValue];
         }
+
+        /// <summary>
+        /// タイプ値名からタイプ値を取得
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string? GetValue(string typeId, string name)
+        {
+            IDictionary<string, string?>? typeValueNameDict = GetTyepDictById(typeId);
+
+            if (typeValueNameDict == null)
+            {
+                return "";
+            }
+
+            foreach(var key in typeValueNameDict.Keys)
+            {
+                if (name == typeValueNameDict[key])
+                {
+                    return key;
+                }
+            }
+
+            return "";
+        }
     }
 }

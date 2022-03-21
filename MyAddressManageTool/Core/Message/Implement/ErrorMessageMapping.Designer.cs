@@ -79,6 +79,15 @@ namespace MyAddressManageTool.Core.Message.Implement {
         }
         
         /// <summary>
+        ///   M0010 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string EA0003 {
+            get {
+                return ResourceManager.GetString("EA0003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   M0002 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string ES0001 {
