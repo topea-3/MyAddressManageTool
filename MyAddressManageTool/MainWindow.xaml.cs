@@ -43,11 +43,26 @@ namespace MyAddressManageTool
 
         }
 
-        private void ExecuteTest(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// ホスト情報管理へ遷移
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GoHostInfoManage_Click(object sender, RoutedEventArgs e)
         {
-            // TestClass.testExec();
             HostInformationInquiryWindow window = new();
             window.Show();
+        }
+
+        /// <summary>
+        /// 設定へ遷移
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GoSetting_Click(object sender, RoutedEventArgs e)
+        {
+            DbConfigWindow window = new();
+            _ = window.ShowDialog();
         }
     }
 }

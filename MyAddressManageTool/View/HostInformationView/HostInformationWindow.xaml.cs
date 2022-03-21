@@ -5,17 +5,7 @@ using MyAddressManageTool.MyApi;
 using MyAddressManageTool.TableManager;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MyAddressManageTool.View.HostInformationView
 {
@@ -128,6 +118,7 @@ namespace MyAddressManageTool.View.HostInformationView
                     RegisterExec();
                     break;
                 case ModeType.Delete:
+                    DeleteExecute();
                     break;
                 case ModeType.Change:
                     ChangeExecute();
@@ -148,7 +139,7 @@ namespace MyAddressManageTool.View.HostInformationView
             // 確認メッセージ表示
             if (ModeType.Register != modeType)
             {
-                MessageBoxResult result = MessageBox.Show("情報が失われますがよろしいですか？", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("情報が失われます。よろしいですか？", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Cancel)
                 {
                     // キャンセルの場合、復元
@@ -317,7 +308,6 @@ namespace MyAddressManageTool.View.HostInformationView
                 }
                 transaction.EndTransaction();
             }
-
         }
 
         /// <summary>
@@ -356,6 +346,41 @@ namespace MyAddressManageTool.View.HostInformationView
 
             // クリアボタン設定
             ClearButton.Visibility = Visibility.Hidden;
+
+            // データ取得
+            // トランザクション制御開始
+            TransactionManager transaction = new();
+            transaction.StartTransaction();
+            HostInformationUnitInquiry model = new(transaction);
+            bool isCommited = false;
+
+            try
+            {
+                // 取得処理
+                HostInformation currentHostInformation = model.GetHostInformation(hostInformation.HostId, hostInformation.SeqNo);
+                transaction.Commit();
+                isCommited = true;
+
+                // 画面表示更新
+                ErrorImformationList.ItemsSource = null;
+                PropertiesCopyUtil.CopyProperties(currentHostInformation, ref hostInformation, PropertiesCopyUtil.CopyType.NullEmptyOverride);
+
+            }
+            catch (MyApplicationException ex)
+            {
+                IList<string> error = new List<string>();
+                error.Add(ex.Message);
+                ErrorImformationList.ItemsSource = error;
+            }
+            finally
+            {
+                if (!isCommited)
+                {
+                    transaction.Rollback();
+                }
+                transaction.EndTransaction();
+            }
+
         }
 
         /// <summary>
@@ -481,5 +506,63 @@ namespace MyAddressManageTool.View.HostInformationView
                 transaction.EndTransaction();
             }
         }
+        // 変更処理
+        private void DeleteExecute()
+        {
+            MessageBoxResult result = MessageBox.Show("削除します。よろしいですか？", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+
+            // Validationチェック
+            MyValidation validation = new();
+            validation.ExecuteValidate(VIEW_ID, hostInformation);
+            IList<string> validationErros = validation.GetResults();
+
+            if (validationErros.Count > 0)
+            {
+                ErrorImformationList.ItemsSource = validationErros;
+                UpdateLayout();
+                return;
+            }
+
+            // トランザクション制御開始
+            TransactionManager transaction = new();
+            transaction.StartTransaction();
+            HostInformationDelete model = new(transaction);
+            bool isCommited = false;
+
+            try
+            {
+                HostInformation returnHostInformation = model.ExecuteDelete(hostInformation);
+                transaction.Commit();
+                isCommited = true;
+
+                // 完了メッセージ表示
+                _ = MessageBox.Show("削除完了しました。", "Information", MessageBoxButton.OK, MessageBoxImage.None);
+
+                // 画面情報の更新
+                ErrorImformationList.ItemsSource = null;
+                PropertiesCopyUtil.CopyProperties(returnHostInformation, ref hostInformation, PropertiesCopyUtil.CopyType.NullEmptyOverride);
+                ShowModeRadioButton.IsChecked = true;
+            }
+            catch (MyApplicationException ex)
+            {
+                IList<string> error = new List<string>();
+                error.Add(ex.Message);
+                ErrorImformationList.ItemsSource = error;
+            }
+            finally
+            {
+                if (!isCommited)
+                {
+                    transaction.Rollback();
+                }
+                transaction.EndTransaction();
+            }
+        }
+
+
     }
 }

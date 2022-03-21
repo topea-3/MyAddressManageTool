@@ -20,9 +20,8 @@ namespace MyAddressManageTool.Model
 
         // トランザクション
         private readonly TransactionManager transactionManager;
-
         // テーブルコントロール
-        TableManagerControll<HostInfoTableEntity> hostInfoTableManager;
+        private readonly TableManagerControll<HostInfoTableEntity> hostInfoTableManager;
 
         /// <summary>
         /// コンストラクタ
