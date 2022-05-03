@@ -129,6 +129,10 @@
     <value>M0010</value>
     <comment>業務例外：変更なしエラー</comment>
   </data>
+  <data name="EA0004" xml:space="preserve">
+    <value>M0011</value>
+    <comment>業務例外：条件エラー</comment>
+  </data>
   <data name="ES0001" xml:space="preserve">
     <value>M0002</value>
     <comment>システム例外：データなし</comment>
@@ -140,6 +144,10 @@
   <data name="ES0003" xml:space="preserve">
     <value>M0007</value>
     <comment>システム例外：採番最大値到達エラー</comment>
+  </data>
+  <data name="ES0004" xml:space="preserve">
+    <value>M0012</value>
+    <comment>システム例外：ユニークエラー</comment>
   </data>
   <data name="EV0001" xml:space="preserve">
     <value>M0004</value>

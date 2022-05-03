@@ -19,8 +19,8 @@ namespace MyAddressManageTool.TableManager.Entity
         public string? SubName4Honor { get; set; }
         public string? SubName5 { get; set; }
         public string? SubName5Honor { get; set; }
-        public int AddressNumber1 { get; set; }
-        public int AddressNumber2 { get; set; }
+        public string? AddressNumber1 { get; set; }
+        public string? AddressNumber2 { get; set; }
         public string? Address1 { get; set; }
         public string? Address2 { get; set; }
         public string? BelongHostId { get; set; }

@@ -88,6 +88,15 @@ namespace MyAddressManageTool.Core.Message.Implement {
         }
         
         /// <summary>
+        ///   M0011 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string EA0004 {
+            get {
+                return ResourceManager.GetString("EA0004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   M0002 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string ES0001 {
@@ -111,6 +120,15 @@ namespace MyAddressManageTool.Core.Message.Implement {
         internal static string ES0003 {
             get {
                 return ResourceManager.GetString("ES0003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   M0012 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ES0004 {
+            get {
+                return ResourceManager.GetString("ES0004", resourceCulture);
             }
         }
         

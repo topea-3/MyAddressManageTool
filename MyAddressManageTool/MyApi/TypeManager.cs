@@ -76,6 +76,31 @@ namespace MyAddressManageTool.MyApi
         }
 
         /// <summary>
+        /// ValueNameセット取得(ブランクあり)
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <returns></returns>
+        public static IDictionary<string, string?>? GetTypeDictByIdWithBlank(string typeId)
+        {
+            IDictionary<string, string?>? returnDict = new Dictionary<string, string?>();
+            returnDict.Add("", "");
+
+            IDictionary<string, string?>? kvps = typeDictionaryCash[typeId];
+
+            if (kvps == null)
+            {
+                return returnDict;
+            }
+
+            foreach (KeyValuePair<string, string?> kvp in kvps)
+            {
+                returnDict.Add(kvp.Key, kvp.Value);
+            }
+
+            return returnDict;
+        }
+
+        /// <summary>
         /// タイプ値名称取得
         /// </summary>
         /// <param name="typeId"></param>

@@ -1,0 +1,108 @@
+﻿<Window x:Class="MyAddressManageTool.View.AddressInfoView.AddressInfoInquiryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyAddressManageTool.View.Converter"
+        mc:Ignorable="d"
+        Title="住所管理ツール - 住所情報" Height="500" Width="800">
+    <Window.Resources>
+        <local:TypeConverter x:Key="TypeCon" />
+    </Window.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <StackPanel Orientation="Vertical" >
+                <!--タイトル-->
+                <Label x:Name="TiltleLabel" Content="一覧照会" Background="Blue" FontWeight="Bold" Foreground="White" FontSize="14"/>
+                <!--エラー表示-->
+                <ListView x:Name="ErrorImformationList" Margin="10,10,10,10" Foreground="Red" HorizontalContentAlignment="Left"
+                          VerticalContentAlignment="Top"/>
+                <!--検索条件-->
+                <Border BorderThickness="0.5" BorderBrush="Black" Margin="10,0,10,10">
+                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel Orientation="Vertical" Width="385" Margin="0,0,5,0">
+                            <!--履歴表示チェックボックス-->
+                            <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+                                <CheckBox x:Name="IsHistoryView" IsChecked="{Binding Path=IsHistoryView, Mode=TwoWay}"  Margin="10,5,0,0"/>
+                                <Label x:Name="IsHistoryViewLabel" Content="履歴を表示する" />
+                            </StackPanel>
+                            <!--住所ID-->
+                            <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+                                <Label x:Name="AddressIdLabel" Content="住所ID" Margin="10,0,17,0"/>
+                                <TextBox x:Name="AddressIdConditionTextBox" Text="{Binding Path=AddressId, Mode=TwoWay}" Width="100" MaxLength="6" MaxLines="1"/>
+                            </StackPanel>
+                            <!--姓-->
+                            <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+                                <Label x:Name="FamilyNameLabel" Content="姓" Margin="10,0,40,0"/>
+                                <TextBox x:Name="FamilyNameTextBox" Text="{Binding Path=FamilyName, Mode=TwoWay}" Width="240" MaxLength="50" MaxLines="1" />
+                            </StackPanel>
+                            <!--名-->
+                            <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+                                <Label x:Name="NameLabel" Content="名" Margin="10,0,40,0"/>
+                                <TextBox x:Name="NameTextBox" Text="{Binding Path=Name, Mode=TwoWay}" Width="240" MaxLength="50" MaxLines="1" />
+                            </StackPanel>
+                            <!--連名-->
+                            <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                                <Label x:Name="SubNameLabel" Content="連名" Margin="10,0,28,0"/>
+                                <TextBox x:Name="SubNameTextBox" Text="{Binding Path=SubName, Mode=TwoWay}" Width="240" MaxLength="50" MaxLines="1" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="385" Margin="0,0,5,0">
+                            <!--住所-->
+                            <StackPanel Orientation="Horizontal" Margin="10,33,10,0">
+                                <Label x:Name="AddressLabel" Content="住所（部分検索）" Margin="10,0,0,0" />
+                                <TextBox x:Name="AddressTextBox" Text="{Binding Path=Address, Mode=TwoWay}" Width="240" MaxLength="100" MaxLines="1" />
+                            </StackPanel>
+                            <!--担当ホストID-->
+                            <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+                                <Label x:Name="BelongHostIdLabel" Content="担当ホストID" Margin="10,0,34,0" />
+                                <TextBox x:Name="BelongHostIdTextBox" Text="{Binding Path=BelongHostId, Mode=TwoWay}" Width="240" MaxLength="6" MaxLines="1" />
+                            </StackPanel>
+                            <!--担当ホスト名称-->
+                            <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+                                <Label x:Name="BelongHostNameLabel" Content="担当ホスト名称（部分検索）" Margin="10,0,0,0" />
+                                <TextBox x:Name="BelongHostNameTextBox" Text="{Binding Path=BelongHostName, Mode=TwoWay}" Width="190" MaxLength="100" />
+                            </StackPanel>
+                            <!--年賀状作成対象-->
+                            <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+                                <Label x:Name="NyLetterCreateFlagLabel" Content="年賀状作成対象" Margin="10,0,0,0" />
+                                <ComboBox x:Name="NyLetterCreateFlagComboBox" SelectedValuePath="Key" DisplayMemberPath="Value" Width="100"/>
+                            </StackPanel>
+                            <!--検索条件ボタン-->
+                            <StackPanel Orientation="Horizontal" Margin="10,10,10,10" HorizontalAlignment="Right">
+                                <Button x:Name="SearchButton" Width="80" Content="検索" Click="SearchButton_Click" Margin="0,0,10,0"/>
+                                <Button x:Name="GoRegisterPageButton" Width="80" Content="登録" Click="GoRegisterPageButton_Click" Margin="0,0,10,0"/>
+                                <Button x:Name="ClearButton" Width="80" Content="クリア" Click="ClearButton_Click" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <StackPanel Orientation="Horizontal" Margin="10,0,10,0">
+                    <Label x:Name="CountLabel" Content="{Binding Path=DataCount, Mode=TwoWay}"  Margin="0,0,10,0" Width="100"/>
+                    <Label x:Name="SeachDateTimeLabel" Content="{Binding Path=SearchDateTime, Mode=TwoWay}" Width="200"/>
+                </StackPanel>
+                <DataGrid x:Name="AddressInfoInquiryData" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+                          Margin="10,0,10,0" SelectionMode="Single" ItemsSource="{Binding Path=Results}"
+                          SelectedCellsChanged="AddressInfoInquiryData_SelectedCellsChanged">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="MaxHeight" Value="20" />
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="住所ID" Binding="{Binding Path=AddressId}" Width="70" />
+                        <DataGridTextColumn Header="Seq" Binding="{Binding Path=SeqNo}" Width="40" />
+                        <DataGridTextColumn Header="氏名" Binding="{Binding Path=Name}" Width="150" />
+                        <DataGridTextColumn Header="住所" Binding="{Binding Path=Address}" Width="150" />
+                        <DataGridTextColumn Header="担当ホスト" Binding="{Binding Path=BelongHostName}" Width="100" />
+                        <DataGridTextColumn Header="年賀状対象" Binding="{Binding Path=NyLetterCreateFlag, Converter={StaticResource ResourceKey=TypeCon},
+                             ConverterParameter=NY_LETTER_CREATE}" Width="70" />
+                        <DataGridTextColumn Header="メモ" Binding="{Binding Path=Remarks}" Width="150" />
+                        <DataGridTextColumn x:Name="HistoryColumn" Header="履歴" 
+                                            Binding="{Binding Path=DeleteFlag, Converter={StaticResource ResourceKey=TypeCon}, ConverterParameter=DELETE}" Width="50" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

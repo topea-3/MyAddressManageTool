@@ -10,6 +10,7 @@
         <Grid Width="380">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="380" Margin="0,10,0,10" >
                 <Button x:Name="GoHostInfoManage" Content="ホスト情報管理" Width="360" Click="GoHostInfoManage_Click" />
+                <Button x:Name="GoAddressInfoManage" Content="住所情報管理" Width="360" Click="GoAddressInfoManage_Click" />
                 <Button x:Name="GoSetting" Content="設定" Width="360" Click="GoSetting_Click"/>
             </StackPanel>
         </Grid>

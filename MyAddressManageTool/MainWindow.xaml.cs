@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MyAddressManageTool.View.HostInformationView;
+using MyAddressManageTool.View.AddressInfoView;
 
 namespace MyAddressManageTool
 {
@@ -63,6 +64,12 @@ namespace MyAddressManageTool
         {
             DbConfigWindow window = new();
             _ = window.ShowDialog();
+        }
+
+        private void GoAddressInfoManage_Click(object sender, RoutedEventArgs e)
+        {
+            AddressInfoInquiryWindow window = new();
+            window.Show();
         }
     }
 }

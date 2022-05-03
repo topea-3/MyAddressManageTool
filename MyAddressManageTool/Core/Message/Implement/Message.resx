@@ -152,4 +152,10 @@
   <data name="M0010" xml:space="preserve">
     <value>変更がありません。</value>
   </data>
+  <data name="M0011" xml:space="preserve">
+    <value>{0}と{1}はどちらか一方を指定してください。</value>
+  </data>
+  <data name="M0012" xml:space="preserve">
+    <value>{0} is not uniq.</value>
+  </data>
 </root>

@@ -149,5 +149,23 @@ namespace MyAddressManageTool.Core.Message.Implement {
                 return ResourceManager.GetString("M0010", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   {0}と{1}はどちらか一方を指定してください。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string M0011 {
+            get {
+                return ResourceManager.GetString("M0011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} is not uniq. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string M0012 {
+            get {
+                return ResourceManager.GetString("M0012", resourceCulture);
+            }
+        }
     }
 }
