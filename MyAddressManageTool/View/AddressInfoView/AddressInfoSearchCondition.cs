@@ -150,21 +150,6 @@ namespace MyAddressManageTool.View.AddressInfoView
             }
         }
 
-        // メモ
-        private string? _remarks;
-        public string? Remarks
-        {
-            get => _remarks;
-            set
-            {
-                if (_remarks != value)
-                {
-                    _remarks = value;
-                    OnPropertyChanged(nameof(Remarks));
-                }
-            }
-        }
-
         // 検索結果件数
         private string _dataCount = "検索結果：0 件";
         public string DataCount

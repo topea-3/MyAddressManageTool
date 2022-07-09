@@ -156,4 +156,28 @@
   <data name="V0001-SubName5" xml:space="preserve">
     <value>連名５</value>
   </data>
+  <data name="V0002-Address" xml:space="preserve">
+    <value>住所</value>
+  </data>
+  <data name="V0002-AddressId" xml:space="preserve">
+    <value>住所ID</value>
+  </data>
+  <data name="V0002-BelongHostId" xml:space="preserve">
+    <value>担当ホストID</value>
+  </data>
+  <data name="V0002-BelongHostName" xml:space="preserve">
+    <value>担当ホスト名称</value>
+  </data>
+  <data name="V0002-FamilyName" xml:space="preserve">
+    <value>姓</value>
+  </data>
+  <data name="V0002-Name" xml:space="preserve">
+    <value>名</value>
+  </data>
+  <data name="V0002-NyLetterCreateFlag" xml:space="preserve">
+    <value>年賀状作成対象</value>
+  </data>
+  <data name="V0002-SubName" xml:space="preserve">
+    <value>連名</value>
+  </data>
 </root>

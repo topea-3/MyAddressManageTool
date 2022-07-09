@@ -169,4 +169,32 @@
     <value>StringLengthCheck_50_0</value>
     <comment>ホスト情報画面</comment>
   </data>
+  <data name="V0002-Address" xml:space="preserve">
+    <value>StringLengthCheck_100_0</value>
+    <comment>住所情報一覧検索画面</comment>
+  </data>
+  <data name="V0002-AddressId" xml:space="preserve">
+    <value>StringLengthCheck_6_0</value>
+    <comment>住所情報一覧検索画面</comment>
+  </data>
+  <data name="V0002-BelongHostId" xml:space="preserve">
+    <value>StringLengthCheck_6_0</value>
+    <comment>住所情報一覧検索画面</comment>
+  </data>
+  <data name="V0002-BelongHostName" xml:space="preserve">
+    <value>StringLengthCheck_100_0</value>
+    <comment>住所情報一覧検索画面</comment>
+  </data>
+  <data name="V0002-FamilyName" xml:space="preserve">
+    <value>StringLengthCheck_50_0</value>
+    <comment>住所情報一覧検索画面</comment>
+  </data>
+  <data name="V0002-Name" xml:space="preserve">
+    <value>StringLengthCheck_50_0</value>
+    <comment>住所情報一覧検索画面</comment>
+  </data>
+  <data name="V0002-SubName" xml:space="preserve">
+    <value>StringLengthCheck_50_0</value>
+    <comment>住所情報一覧検索画面</comment>
+  </data>
 </root>

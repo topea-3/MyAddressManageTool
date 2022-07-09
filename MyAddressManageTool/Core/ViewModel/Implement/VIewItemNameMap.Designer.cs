@@ -176,5 +176,77 @@ namespace MyAddressManageTool.Core.ViewModel.Implement {
                 return ResourceManager.GetString("V0001-SubName5", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   住所 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string V0002_Address {
+            get {
+                return ResourceManager.GetString("V0002-Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   住所ID に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string V0002_AddressId {
+            get {
+                return ResourceManager.GetString("V0002-AddressId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   担当ホストID に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string V0002_BelongHostId {
+            get {
+                return ResourceManager.GetString("V0002-BelongHostId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   担当ホスト名称 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string V0002_BelongHostName {
+            get {
+                return ResourceManager.GetString("V0002-BelongHostName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   姓 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string V0002_FamilyName {
+            get {
+                return ResourceManager.GetString("V0002-FamilyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   名 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string V0002_Name {
+            get {
+                return ResourceManager.GetString("V0002-Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   年賀状作成対象 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string V0002_NyLetterCreateFlag {
+            get {
+                return ResourceManager.GetString("V0002-NyLetterCreateFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   連名 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string V0002_SubName {
+            get {
+                return ResourceManager.GetString("V0002-SubName", resourceCulture);
+            }
+        }
     }
 }
